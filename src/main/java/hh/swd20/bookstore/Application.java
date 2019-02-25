@@ -7,8 +7,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
 import hh.swd20.bookstore.domain.Book;
 import hh.swd20.bookstore.domain.BookRepository;
+import hh.swd20.bookstore.domain.Category;
+import hh.swd20.bookstore.domain.CategoryRepository;
 
 
 
@@ -23,11 +26,17 @@ public class Application {
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository bookRepository1) {
+	public CommandLineRunner bookDemo(BookRepository bookRepository1, CategoryRepository cRepository) {
 		return (args) -> {
 			log.info("save a couple of boks");
-			bookRepository1.save(new Book(null, "Kalevala",  "Makkonen Sami", 2019, "9789511335696", 21.95, null));
-			bookRepository1.save(new Book(null, "Fingerpori 12", "Jarla Pertti", 2019, "9789520118990", 17.95, null));
+			cRepository.save(new Category("Eepos"));
+			cRepository.save(new Category("Komedia"));
+			cRepository.save(new Category("Muu"));
+		
+			
+			
+			bookRepository1.save(new Book(null, "Kalevala",  "Makkonen Sami", 2019, "9789511335696", 21.95, cRepository.findByName("Eepos").get(0)));
+			bookRepository1.save(new Book(null, "Fingerpori 12", "Jarla Pertti", 2019, "9789520118990", 17.95, cRepository.findByName("Komedia").get(0)));
 
 			log.info("fetch all books");
 			for (Book book : bookRepository1.findAll()) {

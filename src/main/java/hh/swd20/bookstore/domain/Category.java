@@ -9,30 +9,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
-
 @Entity
 public class Category {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long categoryId;
 	private String name;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
 	private List<Book> books;
-	
-	
-	
-	
-	public Category(long categoryId, String name, List<Book> books) {
+
+	public Category(String name) {
 		super();
-		this.categoryId = categoryId;
+
 		this.name = name;
-		this.books = books;
+
 	}
+
 	public Category() {
 		super();
 	}
+
 	public long getCategoryId() {
 		return categoryId;
 	}
@@ -56,12 +53,12 @@ public class Category {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
+
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + categoryId + ", name=" + name + ", books=" + books + "]";
+		return "Category [categoryId=" + categoryId + ", name=" + name + "]";
 	}
 
 	
 
-	
 }
