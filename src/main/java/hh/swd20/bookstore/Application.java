@@ -31,7 +31,7 @@ public class Application {
 	public CommandLineRunner bookDemo(BookRepository bookRepository1, CategoryRepository cRepository, UserRepository uRepository) {
 		return (args) -> {
 			log.info("save a couple of boks");
-			cRepository.save(new Category("Eepos"));
+			cRepository.save(new Category("Eepos")); 
 			cRepository.save(new Category("Komedia"));
 			cRepository.save(new Category("Muu"));
 		

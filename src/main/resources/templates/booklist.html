@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <title>Book List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -20,6 +19,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			<th>Category </th>
 			<th> </th>
 			<th> </th>
+			
 		</tr>
 
 		<tr th:each="book : ${books}">
@@ -36,7 +36,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			</td>
 			
 			<td>  <a th:href="@{/editBook/{id}(id=${book.id})}" class="btn btn-success">Edit</a> </td>
-
+<td sec:authorize="hasAuthority('USER')"></td>
 
 
 		</tr>
