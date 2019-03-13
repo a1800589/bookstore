@@ -1,9 +1,13 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <title>Book List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/custom.css}" />
 </head>
 <body>
 	<h1>Books</h1>
@@ -16,12 +20,12 @@
 			<th>ISBN</th>
 			<th>Year</th>
 			<th>Price (€)</th>
-			<th>Category </th>
-			<th> </th>
-			<th> </th>
-			
-		</tr>
+			<th>Category</th>
+			<th></th>
+			<th></th>
 
+		</tr>
+		
 		<tr th:each="book : ${books}">
 			<td th:text="${book.id}">id</td>
 			<td th:text="${book.title}">title</td>
@@ -30,24 +34,25 @@
 			<td th:text="${book.year}">year</td>
 			<td th:text="${book.price}">price</td>
 			<td th:text="${book.category.name}">category</td>
-			
-			<td sec:authorize="hasAuthority('ADMIN')">
-			<a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
 			</td>
-			
-			<td>  <a th:href="@{/editBook/{id}(id=${book.id})}" class="btn btn-success">Edit</a> </td>
-<td sec:authorize="hasAuthority('USER')"></td>
+
+			<td><a th:href="@{/editBook/{id}(id=${book.id})}"
+				class="btn btn-success">Edit</a></td>
+			<td sec:authorize="hasAuthority('USER')"></td>
 
 
 		</tr>
 	</table>
-	
-		<a href="/addBook" class="btn btn-success">New book</a>
-	<form th:action="@{/logout}" method=
-"post">
-<input type="submit" value="Sign Out"/>
-</form>
 
+	<a href="/addBook" class="btn btn-success">New book</a>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" class="btn btn-warning" />
+
+	</form>
+	
 
 </body>
 </html>

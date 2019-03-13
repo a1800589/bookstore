@@ -6,6 +6,7 @@
 <title>Login</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+ <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/custom.css}" />
 </head>
 <body>
 	<div th:if="${param.error}">Invalid username and password.</div>
@@ -20,7 +21,7 @@
 			</label>
 		</div>
 		<div>
-			<input type="submit" value="Sign In" />
+			<input type="submit" value="Sign In" class="btn btn-primary" />
 		</div>
 	</form>
 </body>
