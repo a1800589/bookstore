@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <title>Book List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,11 +30,11 @@
 			<td th:text="${book.year}">year</td>
 			<td th:text="${book.price}">price</td>
 			<td th:text="${book.category.name}">category</td>
-			<td>
-				
-					<a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
-				
+			
+			<td sec:authorize="hasAuthority('ADMIN')">
+			<a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
 			</td>
+			
 			<td>  <a th:href="@{/editBook/{id}(id=${book.id})}" class="btn btn-success">Edit</a> </td>
 
 
